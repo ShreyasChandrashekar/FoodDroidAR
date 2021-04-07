@@ -17,7 +17,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Context context;
     private ArrayList name,area,category;
     CustomAdapter(Context context,ArrayList name,ArrayList area,ArrayList category){
-
+        this.context = context;
         this.name = name;
         this.area = area;
         this.category = category;
@@ -33,8 +33,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
         holder.restaurantName.setText(String.valueOf(name.get(position)));
-        holder.restaurantCategory.setText(String.valueOf(area.get(position)));
-        holder.restaurantArea.setText(String.valueOf(category.get(position)));
+        holder.restaurantCategory.setText(String.valueOf(category.get(position)));
+        holder.restaurantArea.setText(String.valueOf(area.get(position)));
     }
 
     @Override

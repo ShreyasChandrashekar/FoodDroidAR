@@ -45,6 +45,9 @@ public class RestaurantFragment extends Fragment {
                 System.out.println(RestaurantFragment_restaurantName);
                 System.out.println(RestaurantFragment_area);
                 System.out.println(RestaurantFragment_category);
+                RestaurantFragment_customAdapter = new CustomAdapter(getContext(),RestaurantFragment_restaurantName,RestaurantFragment_area,RestaurantFragment_category);
+                RestaurantFragment_recyclerView.setAdapter(RestaurantFragment_customAdapter);
+                RestaurantFragment_recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
 
             @Override
@@ -52,9 +55,7 @@ public class RestaurantFragment extends Fragment {
 
             }
         });
-        RestaurantFragment_customAdapter = new CustomAdapter(getContext(),RestaurantFragment_restaurantName,RestaurantFragment_area,RestaurantFragment_category);
-        RestaurantFragment_recyclerView.setAdapter(RestaurantFragment_customAdapter);
-        RestaurantFragment_recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
         return view;
     }
