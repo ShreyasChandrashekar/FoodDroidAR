@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/textView1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurantBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F44336" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="All Restaurants Nearby"
+        android:textColor="#379683"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/textView"
+        android:fontFamily="@font/poppins_light"
+        android:text="Discover amazing delicacies near you!"
+        android:textColor="#379683"
+        android:textSize="15sp" />
+
+</RelativeLayout>

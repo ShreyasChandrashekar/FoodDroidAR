@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "147256950007",
+    "firebase_url": "https://fooddroidar-86860-default-rtdb.firebaseio.com",
+    "project_id": "fooddroidar-86860",
+    "storage_bucket": "fooddroidar-86860.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147256950007:android:7a94fe824b03b08f0667f2",
+        "android_client_info": {
+          "package_name": "com.example.fdroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147256950007-k1ad8gvukd8c55qedeq18d7qeafi3oem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACfeKphjnwG1l-P-rA3Xai5_s2_KcrKBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147256950007-k1ad8gvukd8c55qedeq18d7qeafi3oem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147256950007:android:8ae7d6b37da6aa5f0667f2",
+        "android_client_info": {
+          "package_name": "com.example.fooddroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147256950007-k1ad8gvukd8c55qedeq18d7qeafi3oem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACfeKphjnwG1l-P-rA3Xai5_s2_KcrKBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147256950007-k1ad8gvukd8c55qedeq18d7qeafi3oem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
