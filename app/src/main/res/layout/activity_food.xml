@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".FoodActivity">
+
+    <TextView
+        android:id="@+id/arline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameBar"
+        android:layout_marginLeft="10dp"
+        android:text="Clicking on the picture will reveal our special AR View Mode!"
+        android:textColor="#379683"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/totalBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#3EDD84"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:text="# | Total:"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:text="₹0"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Cart"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+       <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#3EDD8"
+            app:srcCompat="@drawable/ic_baseline_arrow_right_alt_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nameBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#05386B"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#05386B"
+            app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_light"
+            android:text="RestaurantName"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/arline"
+        android:layout_above="@+id/totalBar"/>
+
+</RelativeLayout>
