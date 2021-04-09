@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class FoodActivity extends AppCompatActivity {
     RecyclerView FoodActivity_recyclerView;
-    ArrayList<String> FoodActivity_foodName,FoodActivity_foodPrice;
+    ArrayList<String> FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR;
     FoodAdapter FoodActivity_customAdapter;
-    TextView FoodActivity_restName;
+    TextView FoodActivity_restName,FoodActivity_totalPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,9 @@ public class FoodActivity extends AppCompatActivity {
         FoodActivity_recyclerView = findViewById(R.id.foodBox);
         FoodActivity_foodName = new ArrayList<>();
         FoodActivity_foodPrice = new ArrayList<>();
+        FoodActivity_AR = new ArrayList<>();
         FoodActivity_restName = findViewById(R.id.restName);
+        FoodActivity_totalPrice = findViewById(R.id.totalPrice);
         Intent FoodActivity_extras = getIntent();
         String FoodActivity_restaurantID = FoodActivity_extras.getStringExtra("restaurantId");
         String FoodActivity_restaurantName = FoodActivity_extras.getStringExtra("restaurantName");
@@ -43,10 +45,11 @@ public class FoodActivity extends AppCompatActivity {
                     FoodData FoodActivity_foodInfo = dataSnapshot.getValue(FoodData.class);
                     FoodActivity_foodName.add(FoodActivity_foodInfo.getName());
                     FoodActivity_foodPrice.add(FoodActivity_foodInfo.getPrice());
+                    FoodActivity_AR.add(FoodActivity_foodInfo.getAR());
                 }
                 System.out.println(FoodActivity_foodName);
                 System.out.println(FoodActivity_foodPrice);
-                FoodActivity_customAdapter = new FoodAdapter(FoodActivity.this,FoodActivity_foodName,FoodActivity_foodPrice);
+                FoodActivity_customAdapter = new FoodAdapter(FoodActivity.this,FoodActivity_totalPrice,FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR);
                 FoodActivity_recyclerView.setAdapter(FoodActivity_customAdapter);
                 FoodActivity_recyclerView.setLayoutManager(new LinearLayoutManager(FoodActivity.this));
             }

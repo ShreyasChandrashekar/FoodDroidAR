@@ -1,11 +1,20 @@
 package com.example.fdroid;
 
 public class FoodData {
-    String Name,Price;
+    String Name,Price,AR;
 
-    public FoodData(String name, String price) {
+    public String getAR() {
+        return AR;
+    }
+
+    public void setAR(String ar) {
+        AR = ar;
+    }
+
+    public FoodData(String name, String price, String ar) {
         Name = name;
         Price = price;
+        AR = ar;
     }
 
     public FoodData() {

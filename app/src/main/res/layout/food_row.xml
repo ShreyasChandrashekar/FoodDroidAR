@@ -19,7 +19,7 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="68dp"
                 android:layout_height="24dp"
-                android:background="#379683"
+                android:background="#FFFFFF"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,10 @@
 
                 <ImageButton
                     android:id="@+id/foodReduce"
-                    android:layout_width="26dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="#379683"
-                    android:tint="#FFFFFF"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:tint="#379683"
                     app:srcCompat="@drawable/minus_24px" />
 
                 <TextView
@@ -45,10 +45,10 @@
 
                 <ImageButton
                     android:id="@+id/foodIncrease"
-                    android:layout_width="26dp"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="#379683"
-                    android:tint="#FFFFFF"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:tint="#379683"
                     app:srcCompat="@drawable/plus_math_24px" />
 
             </LinearLayout>
