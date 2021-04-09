@@ -3,10 +3,13 @@ package com.example.fdroid;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,12 +18,13 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList name,area,category;
-    CustomAdapter(Context context,ArrayList name,ArrayList area,ArrayList category){
+    private ArrayList name,area,category,id;
+    CustomAdapter(Context context,ArrayList name,ArrayList area,ArrayList category,ArrayList id){
         this.context = context;
         this.name = name;
         this.area = area;
         this.category = category;
+        this.id = id;
     }
     @NonNull
     @Override
@@ -35,6 +39,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.restaurantName.setText(String.valueOf(name.get(position)));
         holder.restaurantCategory.setText(String.valueOf(category.get(position)));
         holder.restaurantArea.setText(String.valueOf(area.get(position)));
+        holder.restaurantRowLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent foodIntent = new Intent(context,FoodActivity.class);
+                foodIntent.putExtra("restaurantId",String.valueOf(id.get(position)));
+                foodIntent.putExtra("restaurantName",String.valueOf(name.get(position)));
+                context.startActivity(foodIntent);
+            }
+        });
     }
 
     @Override
@@ -43,11 +56,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView restaurantName,restaurantCategory,restaurantArea;
+        LinearLayout restaurantRowLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             restaurantName = itemView.findViewById(R.id.restaurantName);
             restaurantCategory = itemView.findViewById(R.id.category);
             restaurantArea = itemView.findViewById(R.id.area);
+            restaurantRowLayout = itemView.findViewById(R.id.restaurantRowLayout);
         }
     }
 }

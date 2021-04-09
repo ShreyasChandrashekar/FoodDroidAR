@@ -56,7 +56,7 @@
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:backgroundTint="#3EDD8"
+            android:backgroundTint="#3EDD84"
             app:srcCompat="@drawable/ic_baseline_arrow_right_alt_24" />
     </LinearLayout>
 
@@ -75,18 +75,20 @@
             app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
 
         <TextView
+            android:id="@+id/restName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_light"
             android:text="RestaurantName"
             android:textColor="#FFFFFF"
-            android:textSize="32sp" />
+            android:textSize="28sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/foodBox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/arline"
-        android:layout_above="@+id/totalBar"/>
+        android:layout_above="@+id/totalBar"
+        android:layout_below="@+id/arline" />
 
 </RelativeLayout>
