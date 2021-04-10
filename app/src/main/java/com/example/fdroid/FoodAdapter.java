@@ -14,18 +14,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList name,price,ar;
+    private ArrayList name,price,ar,image;
     private TextView totalPrice;
-   FoodAdapter(Context context,TextView totalPrice,ArrayList name,ArrayList price,ArrayList ar){
+   FoodAdapter(Context context,TextView totalPrice,ArrayList name,ArrayList price,ArrayList ar,ArrayList image){
         this.context = context;
         this.name = name;
         this.price = price;
         this.totalPrice = totalPrice;
         this.ar = ar;
+        this.image = image;
     }
     @NonNull
     @Override
@@ -39,6 +42,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull FoodAdapter.MyViewHolder holder, int position) {
         holder.foodName.setText(String.valueOf(name.get(position)));
         holder.foodPrice.setText("₹ "+String.valueOf(price.get(position)));
+        Picasso.get().load(String.valueOf(image.get(position))).into(holder.foodImage);
         holder.arPop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,12 +95,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView foodName,foodPrice,foodQuantity;
         ImageButton plus,minus;
-        ImageView arPop;
+        ImageView arPop,foodImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             foodName = itemView.findViewById(R.id.foodName);
             foodPrice = itemView.findViewById(R.id.foodPrice);
             foodQuantity = itemView.findViewById(R.id.foodQuantity);
+            foodImage = itemView.findViewById(R.id.foodImage);
             plus = itemView.findViewById(R.id.foodIncrease);
             minus = itemView.findViewById(R.id.foodReduce);
             arPop = itemView.findViewById(R.id.foodImage);

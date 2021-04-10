@@ -4,6 +4,7 @@ public class RestaurantData {
     String Name;
     String Category;
     String Area;
+    String Image;
     String id;
 
     public String getId() {
@@ -17,10 +18,19 @@ public class RestaurantData {
     public RestaurantData() {
     }
 
-    public RestaurantData(String name, String category, String area) {
+    public RestaurantData(String name, String category, String area, String image, String id) {
         Name = name;
         Category = category;
         Area = area;
+        Image = image;
+        this.id = id;
+    }
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
     public String getName() {

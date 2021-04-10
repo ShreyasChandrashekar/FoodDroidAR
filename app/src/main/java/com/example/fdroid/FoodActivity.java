@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class FoodActivity extends AppCompatActivity {
     RecyclerView FoodActivity_recyclerView;
-    ArrayList<String> FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR;
+    ArrayList<String> FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR,FoodActivity_foodImage;
     FoodAdapter FoodActivity_customAdapter;
     TextView FoodActivity_restName,FoodActivity_totalPrice;
     @Override
@@ -30,6 +30,7 @@ public class FoodActivity extends AppCompatActivity {
         FoodActivity_foodName = new ArrayList<>();
         FoodActivity_foodPrice = new ArrayList<>();
         FoodActivity_AR = new ArrayList<>();
+        FoodActivity_foodImage = new ArrayList<>();
         FoodActivity_restName = findViewById(R.id.restName);
         FoodActivity_totalPrice = findViewById(R.id.totalPrice);
         Intent FoodActivity_extras = getIntent();
@@ -46,10 +47,11 @@ public class FoodActivity extends AppCompatActivity {
                     FoodActivity_foodName.add(FoodActivity_foodInfo.getName());
                     FoodActivity_foodPrice.add(FoodActivity_foodInfo.getPrice());
                     FoodActivity_AR.add(FoodActivity_foodInfo.getAR());
+                    FoodActivity_foodImage.add(FoodActivity_foodInfo.getImage());
                 }
                 System.out.println(FoodActivity_foodName);
                 System.out.println(FoodActivity_foodPrice);
-                FoodActivity_customAdapter = new FoodAdapter(FoodActivity.this,FoodActivity_totalPrice,FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR);
+                FoodActivity_customAdapter = new FoodAdapter(FoodActivity.this,FoodActivity_totalPrice,FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR,FoodActivity_foodImage);
                 FoodActivity_recyclerView.setAdapter(FoodActivity_customAdapter);
                 FoodActivity_recyclerView.setLayoutManager(new LinearLayoutManager(FoodActivity.this));
             }

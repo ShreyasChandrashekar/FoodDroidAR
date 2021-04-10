@@ -21,7 +21,8 @@ import java.util.ArrayList;
 
 public class RestaurantFragment extends Fragment {
     RecyclerView RestaurantFragment_recyclerView;
-    ArrayList<String> RestaurantFragment_restaurantName,RestaurantFragment_category,RestaurantFragment_area,RestaurantFragment_id;
+    ArrayList<String> RestaurantFragment_restaurantName,RestaurantFragment_restaurantImage,RestaurantFragment_category,RestaurantFragment_area
+            ,RestaurantFragment_id;
     CustomAdapter RestaurantFragment_customAdapter;
     @Nullable
     @Override
@@ -32,7 +33,7 @@ public class RestaurantFragment extends Fragment {
         RestaurantFragment_restaurantName = new ArrayList<>();
         RestaurantFragment_category = new ArrayList<>();
         RestaurantFragment_area = new ArrayList<>();
-
+        RestaurantFragment_restaurantImage = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Restaurants");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -43,12 +44,14 @@ public class RestaurantFragment extends Fragment {
                     RestaurantFragment_restaurantName.add(RestaurantFragment_restaurantInfo.getName());
                     RestaurantFragment_category.add(RestaurantFragment_restaurantInfo.getCategory());
                     RestaurantFragment_area.add(RestaurantFragment_restaurantInfo.getArea());
+                    RestaurantFragment_restaurantImage.add(RestaurantFragment_restaurantInfo.getImage());
                 }
                 System.out.println(RestaurantFragment_id);
                 System.out.println(RestaurantFragment_restaurantName);
                 System.out.println(RestaurantFragment_area);
                 System.out.println(RestaurantFragment_category);
-                RestaurantFragment_customAdapter = new CustomAdapter(getContext(),RestaurantFragment_restaurantName,RestaurantFragment_area,RestaurantFragment_category,RestaurantFragment_id);
+                RestaurantFragment_customAdapter = new CustomAdapter(getContext(),RestaurantFragment_restaurantName,RestaurantFragment_area,RestaurantFragment_category,RestaurantFragment_id
+                        ,RestaurantFragment_restaurantImage);
                 RestaurantFragment_recyclerView.setAdapter(RestaurantFragment_customAdapter);
                 RestaurantFragment_recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

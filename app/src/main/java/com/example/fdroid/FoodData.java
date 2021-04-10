@@ -1,20 +1,15 @@
 package com.example.fdroid;
 
 public class FoodData {
-    String Name,Price,AR;
+    String Name,Price,AR,Image;
 
-    public String getAR() {
-        return AR;
-    }
 
-    public void setAR(String ar) {
-        AR = ar;
-    }
 
-    public FoodData(String name, String price, String ar) {
+    public FoodData(String name, String price, String ar,String image) {
         Name = name;
         Price = price;
         AR = ar;
+        Image = image;
     }
 
     public FoodData() {
@@ -34,5 +29,21 @@ public class FoodData {
 
     public void setPrice(String price) {
         Price = price;
+    }
+
+    public String getAR() {
+        return AR;
+    }
+
+    public void setAR(String ar) {
+        AR = ar;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 }
