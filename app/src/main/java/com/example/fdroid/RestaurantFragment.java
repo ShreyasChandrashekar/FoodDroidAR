@@ -1,9 +1,15 @@
 package com.example.fdroid;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,14 +30,22 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class RestaurantFragment extends Fragment {
+
     RecyclerView RestaurantFragment_recyclerView;
     ArrayList<String> RestaurantFragment_restaurantName,RestaurantFragment_restaurantImage,RestaurantFragment_category,RestaurantFragment_area
             ,RestaurantFragment_id;
     CustomAdapter RestaurantFragment_customAdapter;
+    TextView userName;
+    Button logoutButton;
+    GoogleSignInClient mGoogleSignInClient;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurant,container,false);
+
+        userName = view.findViewById(R.id.restaurantFragment_userName);
+        logoutButton = view.findViewById(R.id.restaurantFragment_logoutButton);
         RestaurantFragment_recyclerView = view.findViewById(R.id.restaurantBox);
         RestaurantFragment_id = new ArrayList<>();
         RestaurantFragment_restaurantName = new ArrayList<>();
@@ -35,6 +53,30 @@ public class RestaurantFragment extends Fragment {
         RestaurantFragment_area = new ArrayList<>();
         RestaurantFragment_restaurantImage = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Restaurants");
+
+        SharedPreferences sp = getActivity().getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+        userName.setText(sp.getString("userNameKey",""));
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGoogleSignInClient.signOut();
+                SharedPreferences.Editor editor = sp.edit();
+                sp.edit().clear().commit();
+                Toast.makeText(getActivity(), "You're logged out!", Toast.LENGTH_SHORT).show();
+                getActivity().finishAffinity();
+                Intent i = new Intent(getActivity().getApplicationContext(),LoginPage.class);
+                startActivity(i);
+            }
+        });
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

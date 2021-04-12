@@ -39,4 +39,26 @@
         android:textColor="#379683"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/restaurantFragment_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/textView"
+        android:text="TextView"
+        android:textColor="#AA00FF" />
+
+    <Button
+        android:id="@+id/restaurantFragment_logoutButton"
+        android:layout_width="55dp"
+        android:layout_height="29dp"
+        android:layout_below="@+id/restaurantFragment_userName"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="7dp"
+        android:layout_toEndOf="@+id/textView"
+        android:text="Logout"
+        android:textSize="8sp" />
+
 </RelativeLayout>
