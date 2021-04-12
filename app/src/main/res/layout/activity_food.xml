@@ -45,18 +45,20 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/viewCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="View Cart"
             android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="visible" />
 
-       <ImageButton
-            android:id="@+id/imageButton"
+        <ImageButton
+            android:id="@+id/viewCartImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:backgroundTint="#3EDD84"
+            android:visibility="visible"
             app:srcCompat="@drawable/ic_baseline_arrow_right_alt_24" />
     </LinearLayout>
 

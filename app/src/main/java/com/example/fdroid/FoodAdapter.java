@@ -17,18 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> {
     private Context context;
     private ArrayList name,price,ar,image;
     private TextView totalPrice;
-   FoodAdapter(Context context,TextView totalPrice,ArrayList name,ArrayList price,ArrayList ar,ArrayList image){
+    private HashMap<String,ArrayList> orderDetails;
+   FoodAdapter(Context context,TextView totalPrice,ArrayList name,ArrayList price,ArrayList ar,ArrayList image,HashMap orderDetails){
         this.context = context;
         this.name = name;
         this.price = price;
         this.totalPrice = totalPrice;
         this.ar = ar;
         this.image = image;
+        this.orderDetails = orderDetails;
     }
     @NonNull
     @Override
@@ -61,6 +64,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<String> quantPrice = new ArrayList<>();
                 int quant = Integer.parseInt(holder.foodQuantity.getText().toString());
                 int indiPrice = Integer.parseInt(String.valueOf(price.get(position)));
                 int price = Integer.parseInt(totalPrice.getText().toString());
@@ -69,12 +73,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
                 System.out.println(quant);
                 holder.foodQuantity.setText(String.valueOf(quant));
                 totalPrice.setText(String.valueOf(price));
-
+                quantPrice.add(String.valueOf(quant));
+                quantPrice.add(String.valueOf(quant*indiPrice));
+                orderDetails.put(String.valueOf(name.get(position)),quantPrice);
             }
         });
         holder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<String> quantPrice = new ArrayList<>();
                 int quant = Integer.parseInt(holder.foodQuantity.getText().toString());
                 if(quant != 0){
                     quant-=1;
@@ -83,6 +90,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
                     holder.foodQuantity.setText(String.valueOf(quant));
                     price -= indiPrice;
                     totalPrice.setText(String.valueOf(price));
+                    quantPrice.add(String.valueOf(quant));
+                    quantPrice.add(String.valueOf(quant*indiPrice));
+                    orderDetails.put(String.valueOf(name.get(position)),quantPrice);
+                }
+                if(quant == 0 && orderDetails.containsKey(String.valueOf(name.get(position)))){
+                    orderDetails.remove(String.valueOf(name.get(position)));
                 }
             }
         });

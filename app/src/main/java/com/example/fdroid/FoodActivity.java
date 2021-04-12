@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,21 +18,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FoodActivity extends AppCompatActivity {
     RecyclerView FoodActivity_recyclerView;
     ArrayList<String> FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR,FoodActivity_foodImage;
     FoodAdapter FoodActivity_customAdapter;
+    HashMap<String,ArrayList> FoodActivity_orderDetails;
     TextView FoodActivity_restName,FoodActivity_totalPrice;
+    ImageButton FoodActivity_viewCartImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
         FoodActivity_recyclerView = findViewById(R.id.foodBox);
+        FoodActivity_viewCartImage = findViewById(R.id.viewCartImage);
         FoodActivity_foodName = new ArrayList<>();
         FoodActivity_foodPrice = new ArrayList<>();
         FoodActivity_AR = new ArrayList<>();
         FoodActivity_foodImage = new ArrayList<>();
+        FoodActivity_orderDetails = new HashMap<>();
         FoodActivity_restName = findViewById(R.id.restName);
         FoodActivity_totalPrice = findViewById(R.id.totalPrice);
         Intent FoodActivity_extras = getIntent();
@@ -51,7 +58,7 @@ public class FoodActivity extends AppCompatActivity {
                 }
                 System.out.println(FoodActivity_foodName);
                 System.out.println(FoodActivity_foodPrice);
-                FoodActivity_customAdapter = new FoodAdapter(FoodActivity.this,FoodActivity_totalPrice,FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR,FoodActivity_foodImage);
+                FoodActivity_customAdapter = new FoodAdapter(FoodActivity.this,FoodActivity_totalPrice,FoodActivity_foodName,FoodActivity_foodPrice,FoodActivity_AR,FoodActivity_foodImage,FoodActivity_orderDetails);
                 FoodActivity_recyclerView.setAdapter(FoodActivity_customAdapter);
                 FoodActivity_recyclerView.setLayoutManager(new LinearLayoutManager(FoodActivity.this));
             }
@@ -59,6 +66,19 @@ public class FoodActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        FoodActivity_viewCartImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FoodActivity_orderDetails.size()>0){
+                    Intent intent = new Intent(FoodActivity.this,OrderDetails.class);
+                    System.out.println(FoodActivity_totalPrice.getText().toString());
+                    intent.putExtra("restName",FoodActivity_restName.getText().toString());
+                    intent.putExtra("totalPrice",FoodActivity_totalPrice.getText().toString());
+                    intent.putExtra("details",FoodActivity_orderDetails);
+                    startActivity(intent);
+                }
             }
         });
     }
