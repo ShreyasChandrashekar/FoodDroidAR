@@ -153,7 +153,7 @@ public class LoginPage extends AppCompatActivity {
             edit.putString("userPhotoKey",userPhoto.toString());
             edit.commit();
 
-            sp.edit().clear().commit();
+//            sp.edit().clear().commit();
 
             //Toast.makeText(this, "Hello " + sp.getString("userNameKey",""), Toast.LENGTH_SHORT).show();
         }

@@ -6,10 +6,10 @@
         android:title="Search"/>
     <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/fooddroidlogo"
         android:title="Home"/>
     <item
-        android:id="@+id/cart"
-        android:icon="@drawable/ic_baseline_shopping_bag_24"
-        android:title="Cart"/>
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile"/>
 </menu>

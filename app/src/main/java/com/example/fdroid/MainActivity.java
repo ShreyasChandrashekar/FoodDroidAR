@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -29,16 +30,19 @@ public class MainActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.home:
                             MainActivity_selectedFragment = new RestaurantFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                    MainActivity_selectedFragment).commit();
                             break;
                         case R.id.search:
-                            MainActivity_selectedFragment = new SearchFragment();
+                            Intent searchIntent = new Intent(MainActivity.this,SearchActivity.class);
+                            startActivity(searchIntent);
                             break;
-                        case R.id.cart:
-                            MainActivity_selectedFragment = new CartFragment();
+                        case R.id.profile:
+                            Intent profileIntent = new Intent(MainActivity.this,ProfileActivity.class);
+                            startActivity(profileIntent);
                             break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            MainActivity_selectedFragment).commit();
+
                     return true;
                 }
             };
