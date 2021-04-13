@@ -18,6 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -45,8 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
         firstName.setText(sp.getString("userNameKey",""));
         lastName.setText(sp.getString("userLastNameKey",""));
         emailId.setText(sp.getString("userEmailKey",""));
-        String profilePictureUri = sp.getString("userPhotoKey","");
-
+        Picasso.get().load(String.valueOf(sp.getString("userPhotoKey",""))).into(profilePicture);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
