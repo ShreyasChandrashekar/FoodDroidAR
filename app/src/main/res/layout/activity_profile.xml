@@ -4,7 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAE80909"
+    android:background="#FFFFFF"
     tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/profileActivity_updateInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="Click here to update your Google Account Details!"
+        android:textColor="#379683"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/profileActivity_profilePicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/profileActivity_firstNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="First Name:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#379683"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.283"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_profilePicture" />
+
+    <TextView
+        android:id="@+id/profileActivity_firstNameText"
+        android:layout_width="173dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="First Name"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toEndOf="@+id/profileActivity_firstNameLabel"
+        app:layout_constraintTop_toTopOf="@+id/profileActivity_firstNameLabel" />
+
+    <TextView
+        android:id="@+id/profileActivity_lastNameText"
+        android:layout_width="173dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="Last Name"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileActivity_firstNameText"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_firstNameText" />
+
+    <TextView
+        android:id="@+id/profileActivity_emailText"
+        android:layout_width="173dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="Email ID"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileActivity_lastNameText"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_lastNameText" />
+
+    <TextView
+        android:id="@+id/profileActivity_lastNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Last Name:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#379683"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileActivity_firstNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_firstNameLabel" />
+
+    <TextView
+        android:id="@+id/profileActivity_emailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Email ID:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#379683"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profileActivity_lastNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_lastNameLabel" />
+
+    <Button
+        android:id="@+id/profileActivity_logoutButton"
+        android:layout_width="103dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:background="#379683"
+        android:enabled="true"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_emailLabel" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profileActivity_pastOrdersRecyclerView"
+        android:layout_width="410dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/profileActivity_updateInfoText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileActivity_logoutButton"
+        app:layout_constraintVertical_bias="0.027" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

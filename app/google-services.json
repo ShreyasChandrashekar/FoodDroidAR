@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "147256950007-1v5gu86rfv25os3i3pfeq5io1si2drej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fdroid",
+            "certificate_hash": "4149c049febc6e3dde7a1f8f0ecbe51bd3a1babb"
+          }
+        },
+        {
+          "client_id": "147256950007-idsed5k3l7cp6fo6fq9k427efffi5igb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fdroid",
+            "certificate_hash": "ed175c41b5288371108530a02c6673988f68f027"
+          }
+        },
+        {
           "client_id": "147256950007-k1ad8gvukd8c55qedeq18d7qeafi3oem.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -43,6 +59,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "147256950007-nll2fgbscnnsc27rqkjs5amuip8sjtgd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fooddroid",
+            "certificate_hash": "ed175c41b5288371108530a02c6673988f68f027"
+          }
+        },
         {
           "client_id": "147256950007-k1ad8gvukd8c55qedeq18d7qeafi3oem.apps.googleusercontent.com",
           "client_type": 3

@@ -47,17 +47,12 @@ public class LoginPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         signupLink = findViewById(R.id.loginPage_signupText);
 
-        Toast.makeText(this, "Hello " + sp.getString("userNameKey",""), Toast.LENGTH_SHORT).show();
-
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        mAuth = FirebaseAuth.getInstance();
 
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,10 +147,6 @@ public class LoginPage extends AppCompatActivity {
             edit.putString("userIdKey",userId);
             edit.putString("userPhotoKey",userPhoto.toString());
             edit.commit();
-
-//            sp.edit().clear().commit();
-
-            //Toast.makeText(this, "Hello " + sp.getString("userNameKey",""), Toast.LENGTH_SHORT).show();
         }
     }
 }
