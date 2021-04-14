@@ -47,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
         lastName.setText(sp.getString("userLastNameKey",""));
         emailId.setText(sp.getString("userEmailKey",""));
         Picasso.get().load(String.valueOf(sp.getString("userPhotoKey",""))).into(profilePicture);
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
