@@ -26,7 +26,7 @@ public class FoodActivity extends AppCompatActivity {
     FoodAdapter FoodActivity_customAdapter;
     HashMap<String,ArrayList> FoodActivity_orderDetails;
     TextView FoodActivity_restName,FoodActivity_totalPrice;
-    ImageButton FoodActivity_viewCartImage;
+    ImageButton FoodActivity_viewCartImage,FoodActivity_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class FoodActivity extends AppCompatActivity {
         FoodActivity_orderDetails = new HashMap<>();
         FoodActivity_restName = findViewById(R.id.restName);
         FoodActivity_totalPrice = findViewById(R.id.totalPrice);
+        FoodActivity_back = findViewById(R.id.backButton);
         Intent FoodActivity_extras = getIntent();
         String FoodActivity_restaurantID = FoodActivity_extras.getStringExtra("restaurantId");
         String FoodActivity_restaurantName = FoodActivity_extras.getStringExtra("restaurantName");
@@ -79,6 +80,13 @@ public class FoodActivity extends AppCompatActivity {
                     intent.putExtra("details",FoodActivity_orderDetails);
                     startActivity(intent);
                 }
+            }
+        });
+        FoodActivity_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoodActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
     }

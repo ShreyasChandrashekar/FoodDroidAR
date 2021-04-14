@@ -30,12 +30,13 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/ic_baseline_location_on_24" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:fontFamily="@font/poppins_light"
             android:layout_marginLeft="10dp"
-            android:text="Location"
+            android:fontFamily="@font/poppins_light"
+            android:text="Bengaluru"
             android:textSize="32sp" />
     </LinearLayout>
     <FrameLayout
