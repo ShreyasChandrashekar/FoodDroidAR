@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,13 +27,13 @@ public class FoodActivity extends AppCompatActivity {
     FoodAdapter FoodActivity_customAdapter;
     HashMap<String,ArrayList> FoodActivity_orderDetails;
     TextView FoodActivity_restName,FoodActivity_totalPrice;
-    ImageButton FoodActivity_viewCartImage,FoodActivity_back;
+    ImageButton FoodActivity_back;
+    RelativeLayout FoodActivity_checkOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
         FoodActivity_recyclerView = findViewById(R.id.foodBox);
-        FoodActivity_viewCartImage = findViewById(R.id.viewCartImage);
         FoodActivity_foodName = new ArrayList<>();
         FoodActivity_foodPrice = new ArrayList<>();
         FoodActivity_AR = new ArrayList<>();
@@ -41,6 +42,7 @@ public class FoodActivity extends AppCompatActivity {
         FoodActivity_restName = findViewById(R.id.restName);
         FoodActivity_totalPrice = findViewById(R.id.totalPrice);
         FoodActivity_back = findViewById(R.id.backButton);
+        FoodActivity_checkOut = findViewById(R.id.checkOut);
         Intent FoodActivity_extras = getIntent();
         String FoodActivity_restaurantID = FoodActivity_extras.getStringExtra("restaurantId");
         String FoodActivity_restaurantName = FoodActivity_extras.getStringExtra("restaurantName");
@@ -69,7 +71,7 @@ public class FoodActivity extends AppCompatActivity {
 
             }
         });
-        FoodActivity_viewCartImage.setOnClickListener(new View.OnClickListener() {
+        FoodActivity_checkOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(FoodActivity_orderDetails.size()>0){

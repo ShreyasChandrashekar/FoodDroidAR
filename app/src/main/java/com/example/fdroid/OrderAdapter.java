@@ -35,7 +35,7 @@ public class OrderAdapter<context> extends RecyclerView.Adapter<OrderAdapter.MyV
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.MyViewHolder holder, int position) {
         holder.name.setText(String.valueOf(foodName.get(position)));
-        holder.quant.setText(String.valueOf(foodQuant.get(position)));
+        holder.quant.setText(String.valueOf("(" + foodQuant.get(position) + ")"));
         holder.price.setText(String.valueOf("₹"+foodPrice.get(position)));
     }
 

@@ -65,7 +65,7 @@ public class OrderDetails extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
                 DatabaseReference reference = rootNode.getReference("Orders");
-                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd - HH:mm:ss");
                 Date date = new Date();
                 SharedPreferences sp = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
                 String email = sp.getString("userEmailKey","");

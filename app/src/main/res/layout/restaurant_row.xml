@@ -35,7 +35,7 @@
             <TextView
                 android:id="@+id/restaurantName"
                 android:layout_width="227dp"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
                 android:text="Restaurant Name"
                 android:textColor="#000000"

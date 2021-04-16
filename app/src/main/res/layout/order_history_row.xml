@@ -11,65 +11,64 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:padding="10dp"
-            android:background="#FFFFFF">
+            android:layout_height="75dp"
+            android:background="#FFFFFF"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/orderDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif-light"
                 android:text="date-time"
                 android:textColor="#000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.957"
-                app:layout_constraintStart_toEndOf="@+id/orderId" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/orderId"
+                app:layout_constraintEnd_toEndOf="@+id/orderTotalPrice"
+                app:layout_constraintTop_toBottomOf="@+id/orderTotalPrice" />
 
             <TextView
                 android:id="@+id/orderTotalPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="0"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/orderDate"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.94"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.444" />
+                app:layout_constraintTop_toTopOf="@+id/restOrdered"
+                app:layout_constraintVertical_bias="0.666" />
 
             <TextView
                 android:id="@+id/restOrdered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="Restaurant Name"
                 android:textColor="#000000"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.056"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.16" />
 
             <TextView
                 android:id="@+id/orderId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-light"
                 android:text="#order"
                 android:textColor="#000000"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.025"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/restOrdered"
                 app:layout_constraintTop_toBottomOf="@+id/restOrdered"
-                app:layout_constraintVertical_bias="0.36" />
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
