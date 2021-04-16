@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class OrderDetails extends AppCompatActivity {
     HashMap<String,ArrayList> OrderDetails_foodInfo;
     ArrayList<String> OrderDetails_foodName,OrderDetails_foodQuant,OrderDetails_foodPrice;
     OrderAdapter OrderDetails_customAdapter;
+    ImageView OrderDetails_backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,17 @@ public class OrderDetails extends AppCompatActivity {
         OrderDetails_foodName = new ArrayList<>();
         OrderDetails_foodPrice = new ArrayList<>();
         OrderDetails_foodQuant = new ArrayList<>();
+        OrderDetails_backButton = findViewById(R.id.orderDetailsBackButton);
+
+        OrderDetails_backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderDetails.this, FoodActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         Intent OrderDetails_extras = getIntent();
         OrderDetails_restaurantName.setText(OrderDetails_extras.getStringExtra("restName"));
         OrderDetails_foodTotal.setText("₹"+OrderDetails_extras.getStringExtra("totalPrice"));

@@ -87,8 +87,9 @@ public class FoodActivity extends AppCompatActivity {
         FoodActivity_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FoodActivity.this,MainActivity.class);
+                Intent intent = new Intent(FoodActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
