@@ -11,7 +11,9 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".LoginPage"></activity>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchActivity">
+            android:windowSoftInputMode="adjustNothing"
+        </activity>
         <activity android:name=".OrderDetails" />
         <activity android:name=".MainActivity" />
         <activity android:name=".FoodActivity" />

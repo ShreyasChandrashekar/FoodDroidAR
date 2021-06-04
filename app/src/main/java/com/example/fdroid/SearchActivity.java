@@ -1,6 +1,8 @@
 package com.example.fdroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -26,7 +30,6 @@ public class SearchActivity extends AppCompatActivity {
     EditText searchField;
     RecyclerView RestaurantFragment_recyclerView;
     private DatabaseReference restaurantDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class SearchActivity extends AppCompatActivity {
         RestaurantFragment_recyclerView = findViewById(R.id.restaurantBox);
         RestaurantFragment_recyclerView.setHasFixedSize(true);
         RestaurantFragment_recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -58,6 +63,29 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment MainActivity_selectedFragment = null;
+                    switch (item.getItemId()) {
+                        case R.id.home:
+                            Intent homeIntent = new Intent(SearchActivity.this,MainActivity.class);
+                            startActivity(homeIntent);
+                            break;
+                        case R.id.search:
+                            Intent searchIntent = new Intent(SearchActivity.this,SearchActivity.class);
+                            startActivity(searchIntent);
+                            break;
+                        case R.id.profile:
+                            Intent profileIntent = new Intent(SearchActivity.this,ProfileActivity.class);
+                            startActivity(profileIntent);
+                            break;
+                    }
+
+                    return true;
+                }
+            };
 
     private void firebaseRestaurantSearch(Context context, String searchText) {
 

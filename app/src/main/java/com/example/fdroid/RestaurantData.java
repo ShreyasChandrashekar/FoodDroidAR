@@ -1,6 +1,6 @@
 package com.example.fdroid;
 
-public class RestaurantData {
+public class   RestaurantData {
     String Name;
     String Category;
     String Area;
