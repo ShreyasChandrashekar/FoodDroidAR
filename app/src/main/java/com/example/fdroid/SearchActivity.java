@@ -6,12 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -36,30 +40,34 @@ public class SearchActivity extends AppCompatActivity {
         restaurantDatabase = FirebaseDatabase.getInstance().getReference("Restaurants");
 
         searchField = (EditText) findViewById(R.id.searchField);
-        searchButton = (Button) findViewById(R.id.searchButton);
         RestaurantFragment_recyclerView = (RecyclerView)findViewById(R.id.restaurantBox);
         RestaurantFragment_recyclerView.setHasFixedSize(true);
         RestaurantFragment_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchField.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 String searchText = searchField.getText().toString();
-               firebaseRestaurantSearch(searchText);
+                firebaseRestaurantSearch(SearchActivity.this, searchText);
             }
         });
     }
 
-    public void onClick(View v) {
-        searchField.getText().clear(); //or you can use editText.setText("");
-    }
-
-    private void firebaseRestaurantSearch(String searchText) {
+    private void firebaseRestaurantSearch(Context context, String searchText) {
 
         Query firebaseSearchQuery = restaurantDatabase.orderByChild("Name").startAt(searchText).endAt(searchText +"\uf8ff");
 
-        FirebaseRecyclerAdapter<RestaurantData,RestaurantViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<RestaurantData, RestaurantViewHolder>(
+        FirebaseRecyclerAdapter<RestaurantData, RestaurantViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<RestaurantData, RestaurantViewHolder>(
                 RestaurantData.class,
                 R.layout.restaurant_row,
                 RestaurantViewHolder.class,
@@ -67,9 +75,7 @@ public class SearchActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(RestaurantViewHolder restaurantViewHolder, RestaurantData restaurantData, int i) {
-
-                restaurantViewHolder.setDetails(getApplicationContext(),restaurantData.getName(),restaurantData.getCategory(),restaurantData.getImage());
-
+                restaurantViewHolder.setDetails(getApplicationContext(), context, restaurantData.getId(),restaurantData.getName(),restaurantData.getCategory(),restaurantData.getImage());
             }
         };
         RestaurantFragment_recyclerView.setAdapter(firebaseRecyclerAdapter);
@@ -84,11 +90,21 @@ public class SearchActivity extends AppCompatActivity {
             view = itemView;
         }
 
-        public void setDetails(Context ctx,String restaurant_Name, String restaurantCategory, String restaurant_Image){
+        public void setDetails(Context ctx,Context context,String restaurant_Id,String restaurant_Name, String restaurantCategory, String restaurant_Image){
 
-            TextView restaurantName = (TextView)view.findViewById(R.id.restaurantName);
-            TextView category = (TextView)view.findViewById(R.id.category);
-            ImageView restaurantImage = (ImageView)view.findViewById(R.id.restaurantImage);
+            LinearLayout restaurantRow = view.findViewById(R.id.restaurantRowLayout);
+            restaurantRow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent foodIntent = new Intent(context, FoodActivity.class);
+                    foodIntent.putExtra("restaurantId",String.valueOf(restaurant_Id));
+                    foodIntent.putExtra("restaurantName",String.valueOf(restaurant_Name));
+                    context.startActivity(foodIntent);
+                }
+            });
+            TextView restaurantName = view.findViewById(R.id.restaurantName);
+            TextView category = view.findViewById(R.id.category);
+            ImageView restaurantImage = view.findViewById(R.id.restaurantImage);
 
             restaurantName.setText(restaurant_Name);
             category.setText(restaurantCategory);
