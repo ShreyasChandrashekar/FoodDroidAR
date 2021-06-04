@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -89,6 +90,20 @@ public class SearchActivity extends AppCompatActivity {
 
     private void firebaseRestaurantSearch(Context context, String searchText) {
 
+        /*String[] separated = searchText.split(" ");
+        String[] updated = new String[separated.length];
+        int i = 0;
+        for(String word : separated){
+            updated[i] = word.substring(0,1).toUpperCase() + word.substring(1).toLowerCase();
+            i++;
+        }
+        StringBuffer sb = new StringBuffer();
+        for(i = 0; i < updated.length; i++){
+            sb.append(updated[i]);
+            sb.append(" ");
+        }
+        searchText = sb.toString();*/
+        //Toast.makeText(SearchActivity.this, searchText, Toast.LENGTH_SHORT).show();
         Query firebaseSearchQuery = restaurantDatabase.orderByChild("Name").startAt(searchText).endAt(searchText +"\uf8ff");
 
         FirebaseRecyclerAdapter<RestaurantData, RestaurantViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<RestaurantData, RestaurantViewHolder>(
