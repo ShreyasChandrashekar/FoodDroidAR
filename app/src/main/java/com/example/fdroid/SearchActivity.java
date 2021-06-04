@@ -1,6 +1,5 @@
 package com.example.fdroid;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +10,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,7 +24,6 @@ import com.google.firebase.database.Query;
 public class SearchActivity extends AppCompatActivity {
 
     EditText searchField;
-    Button searchButton;
     RecyclerView RestaurantFragment_recyclerView;
     private DatabaseReference restaurantDatabase;
 
@@ -39,8 +35,8 @@ public class SearchActivity extends AppCompatActivity {
 
         restaurantDatabase = FirebaseDatabase.getInstance().getReference("Restaurants");
 
-        searchField = (EditText) findViewById(R.id.searchField);
-        RestaurantFragment_recyclerView = (RecyclerView)findViewById(R.id.restaurantBox);
+        searchField = findViewById(R.id.searchField);
+        RestaurantFragment_recyclerView = findViewById(R.id.restaurantBox);
         RestaurantFragment_recyclerView.setHasFixedSize(true);
         RestaurantFragment_recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
